@@ -8,6 +8,13 @@ if [[ $# != 2 ]]; then
     exit 1
 fi
 
+# Add trap to catch errors
+function cleanup()
+{
+  echo "error: closing script!"
+}
+trap cleanup err
+
 # Load receiver addr and path
 receiver_arr=(${2//:/ }) 
 
